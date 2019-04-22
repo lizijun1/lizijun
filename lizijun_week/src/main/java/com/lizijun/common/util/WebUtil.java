@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebUtil {
-	
-
 	//获取url上的参数，返回字符串值类型，如果没有该参数则返回默认值 (5分)
-	@RequestMapping("list")
+	@RequestMapping("list.do")
 	public  String getString(HttpServletRequest request, String name, @RequestParam(defaultValue="默认值")String defaultValue){
 		if(name!=null){
 			System.out.println(name);
@@ -24,7 +22,8 @@ public class WebUtil {
 		}
 	    //实现代码
 	}
-	@RequestMapping("int")
+	//获取url上的参数，返回整数类型，如果没有该参数或该参数不是整形值，则返回默认
+	@RequestMapping("int.do")
 	public int getInt(Integer aaa,@RequestParam(defaultValue="0")Integer defaultValue){
 	    //实现代码
 		if(aaa!=0){
@@ -35,7 +34,8 @@ public class WebUtil {
 			return defaultValue;
 		}
 	}
-	@RequestMapping("boolean")
+	//获取url上的参数，返回布尔类型，如果没有该参数或该参数不是布尔类型，则返回false  (5分)
+	@RequestMapping("boolean.do")
 	public boolean getBoolean(boolean aaa){
 	    //实现代码
 		if (aaa==true ||aaa == false) {
@@ -46,14 +46,15 @@ public class WebUtil {
 			return false;
 		}
 	}
-	@RequestMapping("url")
+	//获取当前请求地址，注意参数不能丢 (5分)
+	@RequestMapping("url.do")
 	public String getUrl(HttpServletRequest request){
 	    //实现代码
 		String requestURI = request.getRequestURI();
 		System.out.println(requestURI);
 		return requestURI;
 	}
-
+	//给定一个Cookie名获得取Cookie值 (5分)
 	@Test
 	public void cook(){
 		Cookie cookie= new Cookie("aaa", "bbb");
